@@ -10,17 +10,17 @@ load ('./ruby-scripts/settings.rb')
 
 begin
 
-# http = Faraday.new :url => 'http://api.foo.com',
-# :headers => {
-#   'Accept' => 'application/json,
-#   'app_id' => APP_ID,
-#   'app_key'=> APP_KEY,
-# }
+# http = Faraday.new :url => 'http://google.com'
+http = Faraday.new :url => ROOT_URL,
+  :headers => {
+  'Accept' => 'application/json',
+  'app_id' => APP_ID,
+  'app_key' => APP_KEY,
+  }
 
-  # res = Faraday.get 'http://www.google.com'
-  # puts res.body
 
-  puts Dir.pwd
+  res = http.get
+  puts res.body
 
   puts 'hello world'
   puts HELLO
