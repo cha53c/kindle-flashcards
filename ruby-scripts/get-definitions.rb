@@ -1,6 +1,7 @@
 #!/usr/bin/ruby
 
 require 'faraday'
+require 'json'
 
 load ('./ruby-scripts/settings.rb')
 
@@ -17,10 +18,14 @@ http = Faraday.new :url => ROOT_URL,
   'app_id' => APP_ID,
   'app_key' => APP_KEY,
   }
+  # do |faraday|
+    # faraday.response :logger
+  # end
 
-
-  res = http.get
+  # I need to build this string for each word in the list
+  res = http.get '/api/v1/entries/en/ace'
   puts res.body
+
 
   puts 'hello world'
   puts HELLO
