@@ -1,12 +1,13 @@
 #!/usr/bin/ruby
 
 require 'test/unit'
+require_relative '../parse-definitions'
 
-class TestSimpleNumber < Test::Unit::TestCase
+class TestDefinition < Test::Unit::TestCase
 
-  def test_simple
-    assert_equal(4, 4 )
-    assert_equal(6, 6 )
+  def test_description
+    definition = Definition.new
+    assert_equal('blah blah blah', definition.get_descriptions())
   end
- 
+
 end
