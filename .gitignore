@@ -1,3 +1,4 @@
 /output-files/**
 /database/**
 **/settings.rb
+**/.bash_history

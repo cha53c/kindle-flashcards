@@ -1,7 +1,7 @@
 #!/usr/bin/ruby
 
 require 'faraday'
-require 'json'
+
 
 load ('./ruby-scripts/settings.rb')
 
@@ -11,7 +11,7 @@ load ('./ruby-scripts/settings.rb')
 
 begin
 
-# http = Faraday.new :url => 'http://google.com'
+  # http = Faraday.new :url => 'http://google.com'
 http = Faraday.new :url => ROOT_URL,
   :headers => {
   'Accept' => 'application/json',
@@ -22,13 +22,12 @@ http = Faraday.new :url => ROOT_URL,
     # faraday.response :logger
   # end
 
-  # I need to build this string for each word in the list
+  file = File.open('./test-files/sample_entry.txt', 'w')
+  # need to build this string for each word in the list
   res = http.get '/api/v1/entries/en/ace'
   puts res.body
+  file.puts res.body
 
-
-  puts 'hello world'
-  puts HELLO
 
 rescue Faraday::ClientError => e
     puts "Exception occurred"
