@@ -4,7 +4,7 @@ require 'sqlite3'
 require 'csv'
 
 # word is the word highlighted
-# stem is the word things like pluralisation
+# stem is the word without things like pluralisation
 # usage is the section the passage was in
 # category - 100 = mastered 0 = not mastered
 # need to get definition from oe
