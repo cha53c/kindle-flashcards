@@ -5,15 +5,18 @@ require 'json'
 class Definition
 
   def initialize(entry)
-     @entry = entry
+     @hash = JSON.parse(entry)
   end
 
-  def get_descriptions()
-      'blah blah blah'
+  def get_definitions()
+
+      puts @hash.keys
+      # h = @hash.select {|k,v| k == "results"}
+      # h.each_key {|k| puts k }
   end
 
   def get_entry()
-    @entry
+    @hash
   end
 
 end
