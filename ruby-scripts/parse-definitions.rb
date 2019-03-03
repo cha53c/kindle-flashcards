@@ -2,7 +2,7 @@
 
 require 'json'
 # TODO: rename to Entry
-class Definition
+class Entry
 
   def initialize(entry)
      @hash = JSON.parse(entry)
