@@ -1,7 +1,7 @@
 #!/usr/bin/ruby
 
 require 'json'
-
+# TODO: rename to Entry
 class Definition
 
   def initialize(entry)
@@ -17,7 +17,9 @@ class Definition
   end
 
 end
-# TODO: add logging instead of pronunciations
+
+# TODO: add logging
+# TODO remove puts even though commented out
 
 class Hash
   def find_all_values_for(key)
@@ -35,7 +37,8 @@ class Hash
       values = [hash_value]
      end
 
-      puts "  values #{values} nil=#{values.nil?}"
+      # puts "  values #{values} nil=#{values.nil?}"
+
       # loops through values in the has looking for other hashes
       values.each do |value|
         # puts "    value #{value}"
@@ -44,11 +47,12 @@ class Hash
     end
     result.compact
   end
+
   # return array of just hashes, drip all other elements
   def burn_array_elements(array)
     hashes = []
     array.each do |element|
-      puts "element #{element} ary=#{element.is_a? Hash}"
+      # puts "element #{element} ary=#{element.is_a? Hash}"
       hashes << element if element.is_a? Hash
     end
     return hashes

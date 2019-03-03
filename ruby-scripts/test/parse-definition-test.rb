@@ -18,9 +18,10 @@ class TestDefinition < Test::Unit::TestCase
     entry = file.read
     d = Definition.new  entry
     definitions = d.get_definitions()
-    puts definitions
-    assert_equal(12, definitions.length)
     assert_true(definitions.is_a? Array)
+    assert_equal(12, definitions.length)
+    assert_equal("a person who excels at a particular sport or other activity", definitions[1][0])
+
     # assert_equal('results', d.get_definitions())
   end
 
