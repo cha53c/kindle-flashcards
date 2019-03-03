@@ -13,6 +13,16 @@ class TestEntry < Test::Unit::TestCase
     assert_equal(JSON.parse(entry), d.get_entry())
   end
 
+  def test_get_lexicalEntries
+    file = File.open('./test-files/sample-entry.txt', 'r')
+    text = file.read
+    entry = Entry.new text
+    le = entry.get_lexicalEntries()
+    assert_true(le.is_a? Array)
+    # assert_equal(3, le.length)
+    puts le
+  end
+
   def test_descriptions
     file = File.open('./test-files/sample-entry.txt', 'r')
     entry = file.read
@@ -21,8 +31,6 @@ class TestEntry < Test::Unit::TestCase
     assert_true(definitions.is_a? Array)
     assert_equal(12, definitions.length)
     assert_equal("a person who excels at a particular sport or other activity", definitions[1][0])
-
-    # assert_equal('results', d.get_definitions())
   end
 
 end

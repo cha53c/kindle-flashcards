@@ -1,11 +1,22 @@
 #!/usr/bin/ruby
 
 require 'json'
-# TODO: rename to Entry
+# Notes on OED JSON structure
+#
+# lexicalEntries one for each lexicalCategory nouns verbs adjetives
+#
+# path to definitions LexicalEntries/entries/senses/definitions
+# There can be mutiple objects for each LE and for each sense
+# I want to capture lex entries and the first definition from each sense
+
 class Entry
 
   def initialize(entry)
      @hash = JSON.parse(entry)
+  end
+
+  def get_lexicalEntries()
+      @hash.find_all_values_for("lexicalEntries")
   end
 
   def get_definitions()
