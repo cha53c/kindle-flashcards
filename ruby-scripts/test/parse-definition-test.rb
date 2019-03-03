@@ -13,13 +13,14 @@ class TestDefinition < Test::Unit::TestCase
     assert_equal(JSON.parse(entry), d.get_entry())
   end
 
-  def test_description
+  def test_descriptions
     file = File.open('./test-files/sample-entry.txt', 'r')
     entry = file.read
     d = Definition.new  entry
-    keys = d.get_definitions()
-    # puts "Keys"
-    # puts keys
+    definitions = d.get_definitions()
+    puts definitions
+    assert_equal(12, definitions.length)
+    assert_true(definitions.is_a? Array)
     # assert_equal('results', d.get_definitions())
   end
 
