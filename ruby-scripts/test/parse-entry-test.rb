@@ -16,7 +16,7 @@ class TestEntry < Test::Unit::TestCase
   def test_get_lexicalEntries
     le = @entry.get_lexicalEntries()
     assert_true(le.is_a? Array)
-    # assert_equal(3, le.length)
+    assert_equal(3, le.length)
     # puts le
   end
 
