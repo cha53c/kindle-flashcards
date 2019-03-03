@@ -23,6 +23,16 @@ class TestEntry < Test::Unit::TestCase
     puts le
   end
 
+  def test_get_lexicalCategory
+    file = File.open('./test-files/sample-entry.txt', 'r')
+    text = file.read
+    entry = Entry.new text
+    lc = entry.get_lexicalCategory()
+    assert_true(lc.is_a? Array)
+    assert_equal(3, lc.length)
+    puts lc
+  end
+
   def test_descriptions
     file = File.open('./test-files/sample-entry.txt', 'r')
     entry = file.read

@@ -19,6 +19,10 @@ class Entry
       @hash.find_all_values_for("lexicalEntries")
   end
 
+  def get_lexicalCategory()
+    @hash.find_all_values_for("lexicalCategory")
+  end
+
   def get_definitions()
       @hash.find_all_values_for("definitions")
   end
