@@ -2,7 +2,7 @@
 
 require 'test/unit'
 require 'json'
-require_relative '../parse-definitions'
+require_relative '../parse-entry'
 
 class TestEntry < Test::Unit::TestCase
 
