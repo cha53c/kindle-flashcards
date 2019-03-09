@@ -15,8 +15,9 @@ class Entry
      @hash = JSON.parse(entry)
   end
 
+# expected to return an array of entries
   def get_lexicalEntries()
-      @hash.find_all_values_for("entries")
+      @hash.find_all_values_for("lexicalEntries")
   end
 
   def get_lexicalCategory()

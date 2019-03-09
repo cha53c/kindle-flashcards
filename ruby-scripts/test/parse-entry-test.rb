@@ -16,7 +16,7 @@ class TestEntry < Test::Unit::TestCase
   def test_get_lexicalEntries
     le = @entry.get_lexicalEntries()
     assert_true(le.is_a? Array)
-    assert_equal(3, le.length)
+    assert_equal(1, le.length)
     # puts le
   end
 
@@ -24,7 +24,7 @@ class TestEntry < Test::Unit::TestCase
     lc = @entry.get_lexicalCategory()
     assert_true(lc.is_a? Array)
     assert_equal(3, lc.length)
-    puts lc
+    # puts lc
   end
 
   def test_descriptions
