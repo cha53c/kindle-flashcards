@@ -15,9 +15,9 @@ class TextBuilder
 
     # puts entries[0][0].to_s
     # entries[0][0].to_s
-    entry = Entry.new entries.to_s
+    entry = Entry.new entries
     lc = entry.get_lexicalCategory()
-    puts lc
+    puts "lexicalCategory "  + lc
     entries
   end
 

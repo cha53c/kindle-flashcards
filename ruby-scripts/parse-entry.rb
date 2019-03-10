@@ -12,12 +12,21 @@ require 'json'
 class Entry
 
   def initialize(entry)
-     @hash = JSON.parse(entry)
+    @hash = JSON.parse(entry) if entry.is_a? String
+    @hash = entry if entry.is_a? Hash
+    puts "entry is an array" if entry.is_a? Array
   end
 
-# expected to return an array of entries
+  def find_all_values_for_key(key)
+    @hash.find_all_values_for(key)
+  end
+
   def get_lexicalEntries()
       @hash.find_all_values_for("lexicalEntries")
+  end
+
+  def get_Entries()
+      @hash.find_all_values_for("entries")
   end
 
   def get_lexicalCategory()
@@ -38,39 +47,52 @@ end
 # TODO remove puts even though commented out
 
 class Hash
+  # returns an array of all the values matching the key
+  # these may contain hashes, arrays or leaf values
   def find_all_values_for(key)
     result = []
     #  put values that match the key in the result
     result << self[key]
 
     self.values.each do |hash_value|
-      # puts "h value #{hash_value} ary=#{hash_value.is_a? Array}"
+      puts "h value #{hash_value}"
 
-      # if it's an array burn through the elements until you find a Hash
+      # we are looking for keys if we find an array we need skip elements
+      # that are not hashes
      if hash_value.is_a? Array
       values = burn_array_elements(hash_value)
-     else
+    else hash_value.is_a? Hash
       values = [hash_value]
+      puts "not an array"
      end
-
       # puts "  values #{values} nil=#{values.nil?}"
 
-      # loops through values in the has looking for other hashes
+      # loops through values in the hash looking for other hashes
       values.each do |value|
-        # puts "    value #{value}"
+        puts "  value #{value} hash #{value.is_a? Hash} "
+        # replace the array with the one returned from the method
         result += value.find_all_values_for(key) if value.is_a? Hash
       end
     end
-    result.compact
+    puts "result #{result.compact}"
+    result.compact.flatten
   end
 
-  # return array of just hashes, drip all other elements
+  # return array of just hashes, strip all other elements
+  # we are searching for keys so we don't need to be concerned with
+  # the elements of the array unless they are a hash in which case
+  # we will add them to array to be searched, the other elements are ignored
   def burn_array_elements(array)
+    puts "      burn_array_elements #{array}"
     hashes = []
     array.each do |element|
-      # puts "element #{element} ary=#{element.is_a? Hash}"
+      # puts "element #{element} Hash=#{element.is_a? Hash}"
+      puts "      element #{element}"
+      # puts "keys #{element.keys}" if element.is_a? Hash
+
       hashes << element if element.is_a? Hash
     end
+    puts "      hashes array #{hashes}"
     return hashes
   end
 end
