@@ -27,6 +27,10 @@ class Entry
     @hash.find_all_values_for(key)
   end
 
+  def get_word()
+    @hash.find_all_values_for("word")
+  end
+
   def get_lexicalEntries()
       @hash.find_all_values_for("lexicalEntries")
   end

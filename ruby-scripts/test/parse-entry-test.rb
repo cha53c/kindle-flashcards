@@ -127,6 +127,12 @@ end
     assert_equal(3, le.length)
   end
 
+  def test_get_word
+    le = @entry.get_word()
+    assert_true(le.is_a? Array)
+    puts le[0]
+  end
+
   # def test_get_lexicalCategory
   #   lc = @entry.get_lexicalCategory()
   #   assert_true(lc.is_a? Array)
