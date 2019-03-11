@@ -10,15 +10,17 @@ class TextBuilder
 
   def get_card_info()
     entries = @main_entry.get_lexicalEntries()
-    # puts entries[0][0]
-    puts entries[0]
-
-    # puts entries[0][0].to_s
-    # entries[0][0].to_s
-    entry = Entry.new entries
-    lc = entry.get_lexicalCategory()
-    puts "lexicalCategory "  + lc
-    entries
+    # print a description for each lexicalEntries()
+    entries.each do |le|
+      entry = Entry.new le
+      text = ""
+      text =  entry.get_lexicalCategory[0] + "\n"
+      definitions = entry.get_definitions
+      text += "1. " + definitions[0] + "\n"
+      text += "2. " + definitions[1] if definitions.length > 1
+      puts text
+      puts "---------------------"
+    end
   end
 
 end

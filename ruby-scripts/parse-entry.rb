@@ -1,6 +1,11 @@
 #!/usr/bin/ruby
 
 require 'json'
+require 'logger'
+
+logger = Logger.new(STDOUT)
+logger.level = Logger::WARN
+
 # Notes on OED JSON structure
 #
 # lexicalEntries one for each lexicalCategory nouns verbs adjetives
@@ -14,7 +19,8 @@ class Entry
   def initialize(entry)
     @hash = JSON.parse(entry) if entry.is_a? String
     @hash = entry if entry.is_a? Hash
-    puts "entry is an array" if entry.is_a? Array
+    # logger.debug ("entry is an array") if entry.is_a? Array
+
   end
 
   def find_all_values_for_key(key)
@@ -55,7 +61,7 @@ class Hash
     result << self[key]
 
     self.values.each do |hash_value|
-      puts "h value #{hash_value}"
+      # logger.debug("h value #{hash_value}")
 
       # we are looking for keys if we find an array we need skip elements
       # that are not hashes
@@ -63,18 +69,18 @@ class Hash
       values = burn_array_elements(hash_value)
     else hash_value.is_a? Hash
       values = [hash_value]
-      puts "not an array"
+      # logger.debug("value is not an array")
      end
       # puts "  values #{values} nil=#{values.nil?}"
 
       # loops through values in the hash looking for other hashes
       values.each do |value|
-        puts "  value #{value} hash #{value.is_a? Hash} "
+        # logger.debug("  value #{value} hash #{value.is_a? Hash} ")
         # replace the array with the one returned from the method
         result += value.find_all_values_for(key) if value.is_a? Hash
       end
     end
-    puts "result #{result.compact}"
+    # logger.debug("result #{result.compact.flatten}")
     result.compact.flatten
   end
 
@@ -83,16 +89,16 @@ class Hash
   # the elements of the array unless they are a hash in which case
   # we will add them to array to be searched, the other elements are ignored
   def burn_array_elements(array)
-    puts "      burn_array_elements #{array}"
+    # puts "      burn_array_elements #{array}"
     hashes = []
     array.each do |element|
       # puts "element #{element} Hash=#{element.is_a? Hash}"
-      puts "      element #{element}"
+      # puts "      element #{element}"
       # puts "keys #{element.keys}" if element.is_a? Hash
 
       hashes << element if element.is_a? Hash
     end
-    puts "      hashes array #{hashes}"
+    # puts "      hashes array #{hashes}"
     return hashes
   end
 end
