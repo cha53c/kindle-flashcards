@@ -11,11 +11,11 @@ class TestEntry < Test::Unit::TestCase
   end
 
   def teardown
-    @dl.close
+    # @dl.close
   end
 
   def test_lookup_single_entry
-    @dl.get_entry_for("ace")
+    puts @dl.get_entry_for("ace")
   end
 
 end

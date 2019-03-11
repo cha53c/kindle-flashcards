@@ -27,7 +27,7 @@ class DictionaryLookup
   def get_entry_for(word)
       begin
         # Will need to build this string for each word in the list
-        res = @http.get '/api/v1/entries/en/ace'
+        res = @http.get "/api/v1/entries/en/" + word
         # puts res.body
         return res.body
 
@@ -39,7 +39,7 @@ class DictionaryLookup
         puts "Exception occurred"
         puts e
       ensure
-          # db.close if db
+          # @http.close if @http
      end
   end
 end
