@@ -39,7 +39,8 @@ class DictionaryLookup
         puts "Exception occurred"
         puts e
       ensure
-          # @http.close if @http
+        # TODO close connection
+        # @http.close if @http
      end
   end
 end

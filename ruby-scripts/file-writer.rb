@@ -1,7 +1,16 @@
 #!/usr/bin/ruby
 
 require "csv"
-CSV.open("file.csv", "wb") do |csv|
-  csv << ["animal", "count", "price"]
-  csv << ["fox", "1", "$90.00"]
+
+
+
+
+class FileWriter
+  def initialize
+    @csv = CSV.open("output-files/cards.csv", "wb", {:col_sep => "*"})
+    @csv << ["FRONT", "BACK"]
+  end
+
+  def append(line)
+    @csv << line
 end
