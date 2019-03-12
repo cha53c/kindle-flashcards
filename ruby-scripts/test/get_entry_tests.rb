@@ -2,6 +2,7 @@
 
 require 'test/unit'
 require 'json'
+
 require_relative '../get-entry'
 require_relative '../parse-entry'
 require_relative '../text-builder'
@@ -14,6 +15,12 @@ class TestEntry < Test::Unit::TestCase
 
   def teardown
     # @dl.close
+  end
+
+  def test_uri_escaping
+    word =  "détente"
+    doc = @dl.get_entry_for(word)
+    puts doc
   end
 
   def test_entry_not_found

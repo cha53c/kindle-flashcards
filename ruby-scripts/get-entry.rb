@@ -1,7 +1,7 @@
 #!/usr/bin/ruby
 
 require 'faraday'
-
+require 'uri'
 
 load ('./ruby-scripts/settings.rb')
 
@@ -27,7 +27,8 @@ class DictionaryLookup
   def get_entry_for(word)
       begin
         # Will need to build this string for each word in the list
-        res = @http.get "/api/v1/entries/en/" + word
+        enc_word = URI.escape(word)
+        res = @http.get "/api/v1/entries/en/" + enc_word
         # TODO: check http response type
 
         puts "success #{res.success?}"
