@@ -13,4 +13,5 @@ class FileWriter
 
   def append(line)
     @csv << line
+  end
 end
