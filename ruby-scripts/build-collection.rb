@@ -9,7 +9,9 @@ require_relative './text-builder'
 # TODO: load list of words from database
 words = ["anodyne", "fatuous", "inviolate", "etiolated", "scarcity"]
 # TODO: compare with previous list
-fw = FileWriter.new
+# fw = FileWriter.new
+csv = CSV.open("./output-files/cards.csv", "wb", {:col_sep => "*"})
+csv << ["FRONT", "BACK"]
 # TODO: loop through list
 words.each do |w|
   # TODO: get entry from Dictionary
@@ -21,6 +23,6 @@ words.each do |w|
   tb = TextBuilder.new(entry)
   card = tb.get_card_info()
   # TODO: write line to file
-  puts card
-  fw.append(card)
+  csv << [w, card]
+  # fw.append(card)
 end
