@@ -15,6 +15,7 @@ class TextBuilder
     text += "----------\n"
     entries.each do |le|
       entry = Entry.new le
+      text += entry.get_lexicalCategory[0] + "\n"
       definitions = entry.get_definitions
       text += "1. " + definitions[0] + "\n"
       text += "2. " + definitions[1] + "\n" if definitions.length > 1
