@@ -1,0 +1,37 @@
+{
+    "metadata": {
+        "provider": "Oxford University Press"
+    },
+    "results": [
+        {
+            "id": "construal",
+            "language": "en",
+            "lexicalEntries": [
+                {
+                    "derivativeOf": [
+                        {
+                            "id": "construe",
+                            "text": "construe"
+                        }
+                    ],
+                    "entries": [
+                        {
+                            "grammaticalFeatures": [
+                                {
+                                    "text": "Singular",
+                                    "type": "Number"
+                                }
+                            ],
+                            "homographNumber": "000"
+                        }
+                    ],
+                    "language": "en",
+                    "lexicalCategory": "Noun",
+                    "text": "construal"
+                }
+            ],
+            "type": "headword",
+            "word": "construal"
+        }
+    ]
+}

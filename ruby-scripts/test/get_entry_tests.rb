@@ -4,6 +4,7 @@ require 'test/unit'
 require 'json'
 require_relative '../get-entry'
 require_relative '../parse-entry'
+require_relative '../text-builder'
 
 class TestEntry < Test::Unit::TestCase
 
@@ -18,7 +19,7 @@ class TestEntry < Test::Unit::TestCase
   def test_entry_not_found
     word = "demeanor"
     doc = @dl.get_entry_for(word)
-    assert_equal(doc, nil)
+    assert_equal(nil, doc)
   end
 
   def test_lookup_single_entry

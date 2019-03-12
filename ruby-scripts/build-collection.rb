@@ -21,6 +21,7 @@ words.each do |w|
   entry = Entry.new doc
   tb = TextBuilder.new(entry)
   card = tb.get_card_info()
+  next if card.nil?
   csv << [w, card]
   sleep 8.5
 end

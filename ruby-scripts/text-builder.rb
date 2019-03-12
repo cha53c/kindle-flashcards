@@ -10,25 +10,28 @@ class TextBuilder
 
   def get_card_info()
     entries = @main_entry.get_lexicalEntries()
-    # print a description for each lexicalEntries()
-    # text = @main_entry.get_word[0] + "\n"
-    # text += "----------\n"
     text = ""
-    array = []
+    no_defs = false
+
     entries.each do |le|
       entry = Entry.new le
-      array << @main_entry.get_word[0]
       lc = entry.get_lexicalCategory[0]
-      array << lc
+      puts lc
       text += lc
       text += "\n"
       definitions = entry.get_definitions
-      array << definitions[0]
+      puts "definition nil #{definitions.nil?} empty #{definitions.empty?}"
+      no_defs = !definitions.empty?
+      next unless no_defs
       text += "1. " + definitions[0] + "\n"
       text += "2. " + definitions[1] + "\n" if definitions.length > 1
     end
-    return text
-    # return array
+    # if there are no definitions there is not point in building the card
+    unless no_defs
+      return nil
+    else
+      return text
+    end
   end
 
 end

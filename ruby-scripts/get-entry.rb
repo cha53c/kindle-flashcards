@@ -34,6 +34,7 @@ class DictionaryLookup
 
         # puts res.body
         if res.success?
+          # puts res.body
           return res.body
         else
           puts res.status
