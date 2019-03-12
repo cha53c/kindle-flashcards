@@ -15,6 +15,12 @@ class TestEntry < Test::Unit::TestCase
     # @dl.close
   end
 
+  def test_entry_not_found
+    word = "demeanor"
+    doc = @dl.get_entry_for(word)
+    assert_equal(doc, nil)
+  end
+
   def test_lookup_single_entry
     word = "ace"
     doc = @dl.get_entry_for(word)

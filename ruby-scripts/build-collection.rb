@@ -14,13 +14,13 @@ words = vocab_db.get_word_list
 # TODO: compare with previous list
 csv = CSV.open("./output-files/cards.csv", "wb", {:col_sep => "*"})
 words.each do |w|
-  puts w
-  puts "array #{w.is_a? Array}"
+  puts "building card for #{w}"
   dl = DictionaryLookup.new
   doc = dl.get_entry_for(w)
+  next if doc.nil?
   entry = Entry.new doc
   tb = TextBuilder.new(entry)
   card = tb.get_card_info()
   csv << [w, card]
-  sleep 9
+  sleep 8.5
 end

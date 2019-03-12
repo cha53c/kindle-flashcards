@@ -28,8 +28,19 @@ class DictionaryLookup
       begin
         # Will need to build this string for each word in the list
         res = @http.get "/api/v1/entries/en/" + word
+        # TODO: check http response type
+
+        puts "success #{res.success?}"
+
         # puts res.body
-        return res.body
+        if res.success?
+          return res.body
+        else
+          puts res.status
+          puts res.body
+          puts "returned nil"
+          return nil
+        end
 
         # Used to generate test files. Will need to build this as a feature
         # file = File.open('./test-files/sample_entry.txt', 'w')
