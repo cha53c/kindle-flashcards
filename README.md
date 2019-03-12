@@ -20,3 +20,6 @@ The output file will be in `./output-files/cards.csv`
 Choose Basic note type
 import using * as field separator
 check the 'Allow HTML in fields'
+
+## Notes
+This application uses [The Oxford Dictionary API](https://developer.oxforddictionaries.com/documentation)
