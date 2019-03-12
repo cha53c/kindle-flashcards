@@ -18,4 +18,12 @@ class TestEntry < Test::Unit::TestCase
     puts @dl.get_entry_for("ace")
   end
 
+  def test_multi_lookup
+    list = ["anodyne", "fatuous", "inviolate", "etiolated", "scarcity"]
+    list.each do |w|
+      puts @dl.get_entry_for(w)
+    end
+
+  end
+
 end
