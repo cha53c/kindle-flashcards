@@ -14,17 +14,21 @@ class TextBuilder
     # text = @main_entry.get_word[0] + "\n"
     # text += "----------\n"
     text = ""
+    array = []
     entries.each do |le|
       entry = Entry.new le
+      array << @main_entry.get_word[0]
       lc = entry.get_lexicalCategory[0]
-      text += "\n" + lc
+      array << lc
+      text += lc
       text += "\n"
       definitions = entry.get_definitions
+      array << definitions[0]
       text += "1. " + definitions[0] + "\n"
       text += "2. " + definitions[1] + "\n" if definitions.length > 1
-      text +=  "---------------------\n"
     end
     return text
+    # return array
   end
 
 end
