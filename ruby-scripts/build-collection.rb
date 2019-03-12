@@ -11,7 +11,6 @@ words = ["anodyne", "fatuous", "inviolate", "etiolated", "scarcity"]
 # TODO: compare with previous list
 # fw = FileWriter.new
 csv = CSV.open("./output-files/cards.csv", "wb", {:col_sep => "*"})
-csv << ["FRONT", "BACK"]
 # TODO: loop through list
 words.each do |w|
   # TODO: get entry from Dictionary
