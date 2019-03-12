@@ -19,7 +19,7 @@ class DBReader
           puts result
           words << result
         end
-        return list
+        return words.flatten
     rescue SQLite3::Exception => e
         puts "Exception occurred"
         puts e
