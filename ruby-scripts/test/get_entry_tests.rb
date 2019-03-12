@@ -3,6 +3,7 @@
 require 'test/unit'
 require 'json'
 require_relative '../get-entry'
+require_relative '../parse-entry'
 
 class TestEntry < Test::Unit::TestCase
 
@@ -15,13 +16,18 @@ class TestEntry < Test::Unit::TestCase
   end
 
   def test_lookup_single_entry
-    puts @dl.get_entry_for("ace")
+    word = "ace"
+    doc = @dl.get_entry_for(word)
+    entry = Entry.new doc
+    assert_equal(word, entry.get_word[0])
   end
 
   def test_multi_lookup
     list = ["anodyne", "fatuous", "inviolate", "etiolated", "scarcity"]
     list.each do |w|
-      puts @dl.get_entry_for(w)
+      doc = @dl.get_entry_for(w)
+      entry = Entry.new doc
+      assert_equal(w, entry.get_word[0])
     end
 
   end
