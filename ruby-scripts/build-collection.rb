@@ -1,8 +1,10 @@
 #!/usr/bin/ruby
 
-require 'get-entry'
-require 'parse-entry'
-require 'file-writer'
+require_relative './get-entry'
+require_relative './file-writer'
+require_relative './parse-entry'
+require_relative './text-builder'
+
 
 # TODO: load list of words from database
 words = ["anodyne", "fatuous", "inviolate", "etiolated", "scarcity"]
@@ -19,4 +21,6 @@ words.each do |w|
   tb = TextBuilder.new(entry)
   card = tb.get_card_info()
   # TODO: write line to file
-  fw.append(card)  
+  puts card
+  fw.append(card)
+end
