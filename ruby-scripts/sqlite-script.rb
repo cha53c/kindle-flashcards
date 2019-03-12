@@ -9,12 +9,13 @@ require 'csv'
 # category - 100 = mastered 0 = not mastered
 # need to get definition from oe
 begin
-
-    db = SQLite3::Database.open('./vocab.db')
+    puts Dir.pwd
+    db = SQLite3::Database.open('database/vocab.db')
     puts db.get_first_value 'SELECT SQLITE_VERSION()'
     # puts db.execute(".databases")
 
-    csv = CSV.open("./cards.csv", "wb", {:col_sep => "*"})
+
+    csv = CSV.open("output-files/cards.csv", "wb", {:col_sep => "*"})
     csv << ["FRONT", "BACK"]
 
 
