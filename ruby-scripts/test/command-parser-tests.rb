@@ -7,6 +7,9 @@ require_relative '../command-parser'
 class TestEntry < Test::Unit::TestCase
 
 def test_logging_level
+  
+  level = get_log_level(nil)
+  assert_equal(Logger::ERROR, level)
 
   level = get_log_level("")
   assert_equal(Logger::ERROR, level)

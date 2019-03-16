@@ -1,6 +1,7 @@
 #!/usr/bin/ruby
 
 require 'logger'
+
 # default ERROR
 # -v  WARNING
 # -vv INFO
@@ -8,7 +9,7 @@ require 'logger'
 def get_log_level(switches)
   # levels=["ERROR", "WARN", "INFO", "DEBUG"];
   levels=[Logger::ERROR, Logger::WARN, Logger::INFO, Logger::DEBUG]
-  vs = switches.count "v"
+  vs = switches.nil? ? 0 : switches.count("v")
   vs < 4 ? levels[vs] : levels[0]
 
 end
