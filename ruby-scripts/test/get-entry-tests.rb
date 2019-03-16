@@ -20,7 +20,6 @@ class TestEntry < Test::Unit::TestCase
   def test_uri_escaping
     word =  "détente"
     doc = @dl.get_entry_for(word)
-    puts doc
   end
 
   def test_entry_not_found
