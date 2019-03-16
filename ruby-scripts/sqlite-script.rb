@@ -11,18 +11,15 @@ require 'csv'
 class DBReader
   def get_word_list
     begin
-        puts Dir.pwd
         db = SQLite3::Database.open('database/vocab.db')
-        puts db.get_first_value 'SELECT SQLITE_VERSION()'
+        $LOG.debug("db version #{db.get_first_value 'SELECT SQLITE_VERSION()'}")
         words = []
         db.execute("select stem from words") do |result|
-          puts result
           words << result
         end
         return words.flatten
     rescue SQLite3::Exception => e
-        puts "Exception occurred"
-        puts e
+        $LOG.error(e)
     ensure
         db.close if db
     end
