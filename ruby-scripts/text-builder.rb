@@ -16,11 +16,11 @@ class TextBuilder
     entries.each do |le|
       entry = Entry.new le
       lc = entry.get_lexicalCategory[0]
-      puts lc
+      $LOG.debug(lc)
       text += lc
       text += "\n"
       definitions = entry.get_definitions
-      puts "definition nil #{definitions.nil?} empty #{definitions.empty?}"
+      $LOG.debug("definition nil #{definitions.nil?} empty #{definitions.empty?}")
       no_defs = !definitions.empty?
       next unless no_defs
       text += "1. " + definitions[0] + "\n"
