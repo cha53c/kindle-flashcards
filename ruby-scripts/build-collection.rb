@@ -41,4 +41,5 @@ words.each do |w|
   next if card.nil?
   csv << [w, card]
   sleep 8.5
+  $LOG.info("sleep")
 end
