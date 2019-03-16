@@ -19,8 +19,7 @@ class DictionaryLookup
           # faraday.response :logger
         # end
     rescue Faraday::ClientError => e
-        puts "Exception occurred"
-        puts e
+        $LOG.error(e)
     end
   end
 
@@ -31,16 +30,14 @@ class DictionaryLookup
         res = @http.get "/api/v1/entries/en/" + enc_word
         # TODO: check http response type
 
-        puts "success #{res.success?}"
+        $LOG.debug("http status #{res.status}")
 
-        # puts res.body
         if res.success?
-          # puts res.body
           return res.body
         else
-          puts res.status
-          puts res.body
-          puts "returned nil"
+          $LOG.debug("http status #{res.status}")
+          $LOG.debug(res.body)
+          $LOG.debug("returned nil")
           return nil
         end
 
@@ -49,8 +46,7 @@ class DictionaryLookup
         # file.puts res.body
 
       rescue Faraday::ClientError => e
-        puts "Exception occurred"
-        puts e
+        $LOG.error(e)
       ensure
         # TODO close connection
         # @http.close if @http
