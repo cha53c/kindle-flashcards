@@ -10,8 +10,8 @@ class Excludes
 
   def load_words()
     begin
-      CSV.foreach("./input-files/exclude.csv", {:col_sep => "*"}) do |row|
-       puts row
+      CSV.foreach("./input-files/exclude.csv",
+        {:col_sep => "*", :encoding => 'ISO-8859-1'}) do |row|
        @list << row[0]
       end
       @list.sort
