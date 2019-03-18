@@ -2,7 +2,7 @@
 
 require 'csv'
 
-class Excludes
+class ExcludeWords
   def initialize
     @list = []
     load_words
