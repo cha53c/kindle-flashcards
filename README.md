@@ -18,6 +18,7 @@ The directory structure is as follows
 <application root>
   +-ruby-scripts
   +-database
+  +-input-files
   +-output-files
 ```
 These need to be created on the host under the application root and are mounted when the container is started
@@ -33,6 +34,9 @@ Make sure you are in the root directory of the project for all following instruc
 ### Input files
 
 The application uses the Kindle database for input vocab.db. Copy this from the kindle to `./database` folder
+
+Words already in cards can be excluded by placing a csv file name `exclude.csv` in the `input-files` directory. Note: This needs to be in the same format as the output file cards.csv and therefore can use a previous output file by renaming it and moving to `input-files`
+
 
 ## Running the Application
 
