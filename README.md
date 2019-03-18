@@ -31,18 +31,24 @@ Make sure you are in the root directory of the project for all following instruc
 
 `docker run -it --name card-builder -v $(pwd):/root ruby-env`
 
-### Input files
-
-The application uses the Kindle database for input vocab.db. Copy this from the kindle to `./database` folder
-
-Words already in cards can be excluded by placing a csv file name `exclude.csv` in the `input-files` directory. Note: This needs to be in the same format as the output file cards.csv and therefore can use a previous output file by renaming it and moving to `input-files`
-
 
 ## Running the Application
 
 The entry script for the application is `build-collection.rb` This does some initialisation such as setting up the logger which is required by the other scripts
 
 `ruby ruby-scripts/build-collection.rb`
+
+### Input files
+
+The application uses the Kindle database for input vocab.db. Copy this from the kindle to `./database` folder
+
+Words already built inot cards can be excluded by placing a csv file named `exclude.csv` in the `input-files` directory. Note: This needs to be in the same format as the output file cards.csv and therefore can use a previous output file by renaming it and moving to `input-files`
+
+### Output Files
+
+The output file will be in `./output-files/cards.csv`
+
+each run re writes the `cards.csv`
 
 ### Logging
 
@@ -56,11 +62,6 @@ You can change the logging level with the verbose switches
 
 `-vvv`  sets the level to DEBUG
 
-## Output Files
-
-The output file will be in `./output-files/cards.csv`
-
-each run re writes the `cards.csv`
 
 ## Running Tests
 
