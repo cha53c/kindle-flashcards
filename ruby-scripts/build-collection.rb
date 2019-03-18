@@ -1,10 +1,10 @@
 #!/usr/bin/ruby
 
 require 'logger'
+require 'csv'
 
 require_relative './command-parser'
 require_relative './get-entry'
-require_relative './file-writer'
 require_relative './parse-entry'
 require_relative './text-builder'
 require_relative './sqlite-script'
