@@ -47,7 +47,9 @@ The default logging level is ERROR
 You can change the logging level with the verbose switches
 
 `-v`    sets the level to WARN
+
 `-vv`   sets the level to INFO
+
 `-vvv`  sets the level to DEBUG
 
 ## Output Files

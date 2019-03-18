@@ -42,8 +42,6 @@ class DictionaryLookup
         end
 
         # Used to generate test files. Will need to build this as a feature
-        # file = File.open('./test-files/sample_entry.txt', 'w')
-        # file.puts res.body
 
       rescue Faraday::ClientError => e
         $LOG.error(e)
